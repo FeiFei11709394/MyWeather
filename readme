@@ -1,0 +1,2 @@
+因版本问题 在werkzeug __init__.py中添加了一行代码
+   from werkzeug.utils import cached_property

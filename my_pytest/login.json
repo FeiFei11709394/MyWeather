@@ -1,0 +1,50 @@
+{
+  "item":
+  [
+    {
+      "request":
+      {
+        "url": "http://127.0.0.1:5000/user/login",
+        "body":
+        {
+          "password":"123456",
+          "user_name":"root"
+        }
+      },
+      "response":
+        {
+          "status_code": 200,
+          "msg": "登录成功"
+        }
+    },
+    {
+      "request":
+      {
+        "url": "http://127.0.0.1:5000/user/login",
+        "body":
+        {
+          "user_name":"123456"
+        }
+      },
+      "response":{
+          "status_code": 500,
+          "msg": "参数错误"
+        }
+    },
+    {
+      "request":
+      {
+        "url": "http://127.0.0.1:5000/user/login",
+        "body":
+        {
+          "password":"1234567",
+          "user_name":"root"
+        }
+      },
+      "response":{
+          "status_code": 500,
+          "msg": "密码错误"
+        }
+    }
+  ]
+}
