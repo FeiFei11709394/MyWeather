@@ -32,7 +32,7 @@ Flask-Mail==0.9.1
 Flask-Migrate==2.5.3
 Flask-Principal==0.4.0
 Flask-RESTful==0.3.8
-Flask-RESTful==flask-restplus
+flask-restplus==0.13.0
 Flask-Script==2.0.6
 Flask-Security==3.0.0
 Flask-SQLAlchemy==2.4.4
@@ -81,4 +81,5 @@ Werkzeug==1.0.1
 WTForms==2.3.3
 xlrd==1.2.0
 zipp==3.4.0
-pytest == 7.1.2
+pytest==7.1.2
+markupsafe==2.0.1
