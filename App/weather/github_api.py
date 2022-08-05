@@ -8,6 +8,7 @@ import logging
 from App.utils import success_return, error_return
 from App.extensions import redis_base
 from App.settings import ProdConfig
+import datetime
 
 
 class GithubApi:
@@ -38,8 +39,16 @@ class GithubApi:
             try:
                 response = requests.get(url=url, params=kwargs, timeout=10)
                 if response.status_code == 200:
-                    data = success_return(data=response.json(), msg="查询成功")
+                    data = response.json()
 
+                    def serialize_weather(weather_data):
+                        init_time = datetime.datetime.strptime(weather_data["init"], '%Y%m%d%H')
+                        weather_data["init"] = init_time.strftime('%Y-%m-%d %H:%M:%S')
+                        for _ in weather_data["dataseries"]:
+                            _["time"] = (init_time + datetime.timedelta(hours=_["timepoint"])).strftime('%Y-%m-%d %H:%M')
+
+                    serialize_weather(data)
+                    data = success_return(data=data, msg="查询成功")
                     # 存入缓存
                     if redis_connect:
                         try:

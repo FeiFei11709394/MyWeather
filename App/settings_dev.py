@@ -96,14 +96,14 @@ class Config(object):
 
     # 定时任务配置
     JOBS = [
-        # 每分钟清空缓存
+        # 每5分钟清空缓存
         {
             'id': 'clear_redis',
             'func': 'App.task:clear_redis_func',
             'args': (),
             'trigger': 'cron',
             # 'hour': "*/1",
-            'minute': "*/1",
+            'minute': "*/5",
             'second': 0
         }
     ]
